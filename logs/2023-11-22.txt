@@ -1,0 +1,17 @@
+[22-Nov-2023 19:58:40 Europe/Berlin] Uncaught exception: 'Exception' with message 'No router matched'
+Stack trace: #0 C:\Users\szaja\OneDrive\Pulpit\LearningPHP\BudgetApp_MVC\public\index.php(42): Core\Router->dispatch('favicon.ico')
+#1 {main}
+Thrown in 'C:\Users\szaja\OneDrive\Pulpit\LearningPHP\BudgetApp_MVC\Core\Router.php' on line 132
+[22-Nov-2023 20:06:49 Europe/Berlin] Uncaught exception: 'PDOException' with message 'SQLSTATE[42S02]: Base table or view not found: 1146 Table 'login.posts' doesn't exist'
+Stack trace: #0 C:\Users\szaja\OneDrive\Pulpit\LearningPHP\BudgetApp_MVC\App\Models\Post.php(31): PDO->query('SELECT id, titl...')
+#1 C:\Users\szaja\OneDrive\Pulpit\LearningPHP\BudgetApp_MVC\App\Controllers\Posts.php(22): App\Models\Post::getAll()
+#2 [internal function]: App\Controllers\Posts->indexAction()
+#3 C:\Users\szaja\OneDrive\Pulpit\LearningPHP\BudgetApp_MVC\Core\Controller.php(46): call_user_func_array(Array, Array)
+#4 C:\Users\szaja\OneDrive\Pulpit\LearningPHP\BudgetApp_MVC\Core\Router.php(120): Core\Controller->__call('index', Array)
+#5 C:\Users\szaja\OneDrive\Pulpit\LearningPHP\BudgetApp_MVC\public\index.php(42): Core\Router->dispatch('posts/index')
+#6 {main}
+Thrown in 'C:\Users\szaja\OneDrive\Pulpit\LearningPHP\BudgetApp_MVC\App\Models\Post.php' on line 31
+[22-Nov-2023 20:43:10 Europe/Berlin] Uncaught exception: 'Exception' with message 'Controller class App\Controllers\Posts not found'
+Stack trace: #0 C:\Users\szaja\OneDrive\Pulpit\LearningPHP\BudgetApp_MVC\public\index.php(42): Core\Router->dispatch('posts/index')
+#1 {main}
+Thrown in 'C:\Users\szaja\OneDrive\Pulpit\LearningPHP\BudgetApp_MVC\Core\Router.php' on line 128
