@@ -4,13 +4,14 @@
 
 {% block body %}
 
-    <h1>Welcome</h1>
-    <p>Hello from a Twig template, {{ name }}!</p>
+ 
 
-    <ul>
-        {% for colour in colours %}
-            <li>{{ colour }}</li>
-        {% endfor %}
-    </ul>
+    <h1>Welcome</h1>
+
+   {% if current_user %}
+        Hello {{ current_user.name }}
+    {% else %}
+        <a href="/signup/new">Sign up</a> or <a href="/login">log in</a>.
+    {% endif %}
 
 {% endblock %}
