@@ -61,25 +61,31 @@
         </ul>
     {% endif %}
 
-    <form method="post" id="formProfile" action="/profile/update">
+    <div class="row">
+        <div class="col"></div>
+        <div class="col-lg-6 col-md-8 col-sm-10">
+            <form method="post" id="formProfile" action="/profile/update">
 
-        <div class="form-group">
-            <label for="inputName">Name</label>
-            <input id="inputName" name="name" placeholder="Name" value="{{ user.name }}" required class="form-control" />
-        </div>
-        <div class="form-group">
-            <label for="inputEmail">Email address</label>
-            <input id="inputEmail" name="email" placeholder="email address" value="{{ user.email }}" required type="email" class="form-control" />
-        </div>
-        <div class="form-group">
-            <label for="inputPassword">Password</label>
-            <input type="password" id="inputPassword" name="password" placeholder="Password" aria-describedby="helpBlock" class="form-control" />
-            <span id="helpBlock" class="help-block">Leave blank to keep current password</span>
-        </div>
+                <div class="form-group mt-3">
+                    <label for="inputName" class="form-label">Name</label>
+                    <input class="form-control" id="inputName" name="name" placeholder="Name" value="{{ user.name }}" required class="form-control" />
+                </div>
+                <div class="form-group mt-3">
+                    <label for="inputEmail" class="form-label">Email address</label>
+                    <input class="form-control" id="inputEmail" name="email" placeholder="email address" value="{{ user.email }}" required type="email" class="form-control" />
+                </div>
+                <div class="form-group mt-3">
+                    <label for="inputPassword" class="form-label">Password</label>
+                    <input class="form-control" type="password" id="inputPassword" name="password" placeholder="Password" aria-describedby="helpBlock" class="form-control" />
+                    <span id="helpBlock" class="help-block">Leave blank to keep current password</span>
+                </div>
 
-        <button type="submit" class="btn btn-default">Save</button>
-        <a href="/profile/show">Cancel</a>
+                <button type="submit" class="btn btn-light mt-5">Save</button>
+                <a href="/profile/show" class="btn btn-light mt-5">Cancel</a>
 
-    </form>
+            </form>
+        </div>
+        <div class="col"></div>
+    </div>
 
 {% endblock %}
