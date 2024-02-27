@@ -45,7 +45,7 @@ class Mail {
         $mail->Port       = 587;                                    //TCP port to connect to; use 587 if you have set `SMTPSecure = PHPMailer::ENCRYPTION_STARTTLS`
 
         //Recipients
-        $mail->setFrom('konto.robocze.dominika@gmail.com', 'Mailer1');
+        $mail->setFrom('konto.robocze.dominika@gmail.com', 'BudgetApp');
         $mail->addAddress($to, 'To');     //Add a recipient
         //$mail->addAddress('ellen@example.com');               //Name is optional
         $mail->Subject = $subject;
@@ -65,7 +65,7 @@ class Mail {
         $mail->AltBody = $text;
 
         $mail->send();
-        echo 'Message has been sent';
+        //echo 'Message has been sent';
     } catch (Exception $e) {
         echo "Message could not be sent. Mailer Error: {$mail->ErrorInfo}";
     }

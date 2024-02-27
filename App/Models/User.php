@@ -76,6 +76,7 @@ class User extends \Core\Model
             $stmt->bindValue(':activation_hash', $hashed_token, PDO::PARAM_STR);
 
             return $stmt->execute();
+
         }
 
         return false;
@@ -456,6 +457,99 @@ class User extends \Core\Model
  
          return false;
      }
+
+     /**
+     * Get last inserted id from database
+     * 
+     * @return integer Last inserted id
+     * 
+     */
+    static function getLastInsertedId() {
+
+        $db = static::getDB();
+        return $db -> lastInsertId();
+
+    }
+
+    /**
+     * Set default income, expense and payment categories to user
+     * 
+     * @return void
+     * 
+     */
+    public static function setDefaultCategoriesToUser() {
+
+      $user_id = static::getLastInsertedId();
+
+      static::setDefaultIncomeCategories($user_id);
+      static::setDefaultExpenseCategories($user_id);
+      static::setDefaultPaymentMethods($user_id);
+
+    }
+
+
+    /**
+     * Set default income categories to user
+     * 
+     * @return void
+     * 
+     */
+    static function setDefaultIncomeCategories($user_id) {
+
+      $sql = 'INSERT INTO incomes_category_assigned_to_users (incomes_category_assigned_to_users.user_id, 
+                                                              incomes_category_assigned_to_users.name) 
+              SELECT :user_id, incomes_category_default.name 
+              FROM incomes_category_default'; 
+
+      $db = static::getDB();
+      $stmt = $db -> prepare($sql);
+      $stmt -> bindValue(':user_id', $user_id, PDO::PARAM_INT);
+
+      $stmt -> execute();
+
+    }
+
+    /**
+     * Set default expense categories to user
+     * 
+     * @return void
+     * 
+     */
+    static function setDefaultExpenseCategories($user_id) {
+
+      $sql = 'INSERT INTO expenses_category_assigned_to_users (expenses_category_assigned_to_users.user_id, 
+                                                              expenses_category_assigned_to_users.name) 
+              SELECT :user_id, expenses_category_default.name 
+              FROM expenses_category_default'; 
+
+      $db = static::getDB();
+      $stmt = $db -> prepare($sql);
+      $stmt -> bindValue(':user_id', $user_id, PDO::PARAM_INT);
+
+      $stmt -> execute();
+
+    }
+
+    /**
+     * Set default payment methods to user
+     * 
+     * @return void
+     * 
+     */
+    static function setDefaultPaymentMethods($user_id) {
+
+      $sql = 'INSERT INTO payment_methods_assigned_to_users (payment_methods_assigned_to_users.user_id, 
+                                                            payment_methods_assigned_to_users.name) 
+              SELECT :user_id, payment_methods_default.name 
+              FROM payment_methods_default'; 
+
+      $db = static::getDB();
+      $stmt = $db -> prepare($sql);
+      $stmt -> bindValue(':user_id', $user_id, PDO::PARAM_INT);
+
+      $stmt -> execute();
+
+    }
 
 
 

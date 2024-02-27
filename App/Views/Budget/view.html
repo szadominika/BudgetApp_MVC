@@ -1,0 +1,22 @@
+{% extends 'base.html' %}
+
+{% block title %}Balance{% endblock %}
+
+{% block footer %}
+{% endblock %}
+
+{% block body %}
+
+    <h1>Now you see what you done...</h1>
+
+    {% if user.errors is not empty %}
+        <p>Errors:</p>
+        <ul>
+            {% for error in user.errors %}
+                <li>{{ error }}</li>
+            {% endfor %}
+        </ul>
+    {% endif %}
+
+    
+{% endblock %}
