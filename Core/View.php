@@ -60,6 +60,7 @@ class View
             //$twig->addGlobal('is_logged_in', \App\Auth::isLoggedIn());
             $twig->addGlobal('current_user', \App\Auth::getUser());
             $twig->addGlobal('flash_messages', \App\Flash::getMessages());
+            //$twig -> addGlobal('actualPage', $_SESSION["page"]);
         }
 
         return $twig->render($template, $args);

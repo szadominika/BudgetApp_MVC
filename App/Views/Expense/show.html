@@ -1,0 +1,76 @@
+{% extends 'base.html' %}
+
+{% block title %}Add Expense{% endblock %}
+
+{% block footer %}
+
+{% endblock %}
+
+{% block body %}
+
+    <h1>Add expense</h1>
+
+    {% if user.errors is not empty %}
+        <p>Errors:</p>
+        <ul>
+            {% for error in user.errors %}
+                <li>{{ error }}</li>
+            {% endfor %}
+        </ul>
+    {% endif %}
+
+    <div class="row">
+        <div class="col"></div>
+
+        <div class="col-lg-3 col-md-5 col-sm-7">
+            <form method="post" id="formExpense" action="/expense/add-expense">
+
+                <div class="form-group m-3">
+                    <label name="expenseAmount" class="form-label">Amount:</label>
+                    <input id="expenseAmount" class="form-control" name="amount" type="number" aria-label="Amount (to the nearest dollar)" min="0.01" step="0.01" required>
+                </div> 
+        
+                  <div class="form-group m-3">
+                    <label name="startDate" class="form-label">Date:</label>
+                      <input name="date_of_expense"  id="startDate" type="date" value="2024-01-01" min="2020-01-01" max="2040-01-01" class="form-control" required>
+                  </div>
+        
+
+                  <div class="form-group m-3">
+                    <label name="expenseCategories" class="form-label">Category:</label>
+                    <select id="expenseCategories" name="expense_category" class="form-control" required>
+                        <option value="">Choose expense category...</option>
+                        {% for expense_category in expense_categories %}
+                        <option value="{{ expense_category.name }}">{{ expense_category.name}}</option>
+                        {% endfor %}
+                    </select>
+                  </div>
+
+
+                  <div class="form-group m-3">
+                    <label name="methodPayment" class="form-label">Category:</label>
+                    <select id="methodPayment" name="payment_category" class="form-control" required>
+                        <option value="">Choose payment method...</option>
+                        {% for method_payment in method_payments %}
+                        <option value="{{ method_payment.name }}">{{ method_payment.name}}</option>
+                        {% endfor %}
+                    </select>
+                  </div>
+                  
+                            
+                  <div class="form-group m-3">
+                    <label name="expenseComment" class="form-label">Comment (optional):</label>
+                    <textarea id="expenseComment" name="comment" class="form-control" aria-label="With textarea"></textarea>
+                  </div>
+                  
+                  <button class="btn btn-light mt-5" type="submit"><i class="bi bi-plus-circle-fill"></i> Add </button>
+                
+                  <button class="btn btn-light mt-5" type="reset"><i class="bi bi-x-circle-fill"></i> Cancel </button>
+
+            </form>
+        </div>
+
+        <div class="col"></div>
+    </div>
+
+{% endblock %}
