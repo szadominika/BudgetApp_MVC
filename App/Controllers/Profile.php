@@ -5,11 +5,22 @@ namespace App\Controllers;
 use \Core\View;
 use \App\Auth;
 use \App\Flash;
+use \App\Models\User;
+use App\Models\UsersIncome;
 /**
  * Profile controller
  */
 
  class Profile extends Authenticated {
+
+        /**
+     * User object returned from Auth class
+     * @var user 
+     * 
+     */
+    public $user;
+
+
 
     /**
      * Show the profile
@@ -59,5 +70,31 @@ use \App\Flash;
             ]);
 
         }
+    }
+
+    /**
+     * Delete the account
+     * 
+     * @return void
+     * 
+     */
+    public function deleteAction() {
+        $this -> user = Auth::getUser();
+        if ($this->user->deleteUser($_POST)) {
+
+            Flash::addMessage('Account deleted successfully');
+
+            $this -> redirect('/');
+
+        } //else {
+
+            //View::renderTemplate('Settings/show.html', [
+                //'user' => $this -> user,
+                //'currentIncomeCategories' => $this -> incomeCategories,
+                //'currentExpenseCategories' => $this -> expenseCategories,
+                //'currentPaymentMethods' => $this -> paymentMethods
+           // ]);
+
+        //}
     }
  }

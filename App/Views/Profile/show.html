@@ -15,4 +15,24 @@
 
     <a href="/profile/edit" class="btn btn-light mt-5">Edit</a>
 
+    <hr>
+
+    <p>If you want to delete your account, please click the button below.</p>
+    <p>Remember, this will destroy all of your data.</p>
+    <a href="/profile/delete" class="btn btn-light mt-5">Delete</a>
+
+    <hr>
+
+    <p>If you want see your categories of income or expense, click below.</p>
+
+    <div class="form-group m-3">
+        <label name="incomeCategories" class="form-label">Category:</label>
+        <select id="incomeCategories" name="income_category" class="form-control" required>
+            <option value="">Choose income category...</option>
+            {% for income_category in income_categories %}
+            <option value="{{ income_category.name }}">{{ income_category.name}}</option> 
+            {% endfor %}
+        </select>
+      </div>
+
 {% endblock %}
